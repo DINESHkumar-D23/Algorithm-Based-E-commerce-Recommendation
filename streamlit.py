@@ -30,7 +30,7 @@ if "last_resolved_product" not in st.session_state:
 # Page config (UNCHANGED UI)
 # ------------------------------------------------------
 st.set_page_config(
-    page_title="AI E-Commerce Recommender",
+    page_title="E-Commerce Products Recommender",
     page_icon="6795674-200.png",
     layout="wide"
 )
@@ -85,7 +85,7 @@ section[data-testid="stSidebar"] {
 
 st.markdown("""
 <div style="margin-bottom: 2.5rem;">
-    <h1>AI-Powered Recommendation System</h1>
+    <h1>Algorithmic Recommendation System</h1>
     <p style="color:#94a3b8;font-size:1.05rem;max-width:720px;">
         Discover personalized product recommendations using intelligent
         content-based and collaborative filtering techniques.
@@ -236,3 +236,4 @@ if st.session_state.last_result is not None:
             st.markdown(f"**{row['Name']}**")
             st.caption(f"Brand: {row.get('Brand', 'N/A')}")
             st.caption(f"Rating: {round(row.get('Rating', 0), 2)}")
+
