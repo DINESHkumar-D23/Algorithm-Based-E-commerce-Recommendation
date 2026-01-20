@@ -1,4 +1,4 @@
-# AI-Enabled Recommendation Engine for an E-commerce Platform
+# Recommendation Engine for an E-commerce Platform
 
 This project demonstrates the functionality of personalized product recommendations in an e-commerce platform. The system uses multiple recommendation algorithms that are commonly adopted in real-world industry applications.
 
