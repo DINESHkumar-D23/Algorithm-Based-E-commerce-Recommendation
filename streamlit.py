@@ -30,7 +30,7 @@ if "last_resolved_product" not in st.session_state:
 # Page config (UNCHANGED UI)
 # ------------------------------------------------------
 st.set_page_config(
-    page_title="E-Commerce Products Recommender",
+    page_title="AI E-Commerce Recommender",
     page_icon="6795674-200.png",
     layout="wide"
 )
@@ -85,7 +85,7 @@ section[data-testid="stSidebar"] {
 
 st.markdown("""
 <div style="margin-bottom: 2.5rem;">
-    <h1>Algorithmic Recommendation System</h1>
+    <h1>AI-Powered Recommendation System</h1>
     <p style="color:#94a3b8;font-size:1.05rem;max-width:720px;">
         Discover personalized product recommendations using intelligent
         content-based and collaborative filtering techniques.
@@ -232,8 +232,68 @@ if st.session_state.last_result is not None:
     cols = st.columns(4)
     for i, (_, row) in enumerate(st.session_state.last_result.iterrows()):
         with cols[i % 4]:
-            st.image(row["ImageURL"], use_container_width=True)
-            st.markdown(f"**{row['Name']}**")
-            st.caption(f"Brand: {row.get('Brand', 'N/A')}")
-            st.caption(f"Rating: {round(row.get('Rating', 0), 2)}")
+            st.markdown(f"""
+            <div class="product-card">
+                <img src="{row['ImageURL']}">
+                <div class="product-title">
+                    {row['Name']}
+                </div>
+                <div class="product-meta">
+                    Brand: {row.get('Brand', 'N/A')}<br>
+                    Rating: {round(row.get('Rating', 0), 2)}
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+
+
+st.markdown(""" 
+<style>
+/* ---------- PRODUCT CARD ---------- */
+.product-card {
+    background: #020617;
+    border: 1px solid #1e293b;
+    border-radius: 14px;
+    padding: 14px;
+    height: 360px;              
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-card img {
+    border-radius: 10px;
+    object-fit: cover;
+    height: 160px;           
+    width: 100%;
+}
+
+.product-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-top: 8px;
+    min-height: 38px;         
+
+}
+
+.product-meta {
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+/* ---------- CARD HOVER EFFECT ---------- */
+.product-card {
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+.product-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+        0 12px 25px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(56, 189, 248, 0.6);
+    border-color: #38bdf8;
+}
+
+</style>
+""", unsafe_allow_html=True)
 
